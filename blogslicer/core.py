@@ -75,8 +75,6 @@ with open(journal_path, "r") as fh:
             counter = counter + 1
 dates.reverse()
 
-h1(f"There Are {counter} Posts:")
-
 table = []
 at_top = True
 index_list = []
