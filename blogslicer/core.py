@@ -48,7 +48,7 @@ title: "{blog_title}"
 slug: {blog_slug}
 ---
 
-[Single Page {blog_title}](/journal/)
+## [{blog_title} as One Page](/journal/)
 
 """
 
