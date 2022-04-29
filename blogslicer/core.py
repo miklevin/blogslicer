@@ -23,7 +23,7 @@ if hasattr(__builtins__, "__IPYTHON__"):
     h3 = lambda text: display(Markdown(f"### {text}"))
 
     folder_name = "../pythonically"
-    blog_title = "Pythonic Ally Blog Index"
+    blog_title = "Pythonic Ally Blog"
     blog_slug = "blog"
 else:
     h1 = lambda text: print(f"# {text}")
@@ -46,7 +46,11 @@ index_front_matter = f"""---
 layout: post
 title: "{blog_title}"
 slug: {blog_slug}
----"""
+---
+
+[Single Page {blog_title}](/journal/)
+
+"""
 
 journal_path = f"{folder_name}/journal.md"
 output_path = f"{folder_name}/_posts/"
