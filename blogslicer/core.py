@@ -7,6 +7,7 @@ __all__ = ['stops', 'index_front_matter', 'journal_path', 'output_path', 'slicer
 
 import nltk
 import argparse
+from pathlib import Path
 from dateutil import parser
 from slugify import slugify
 from nltk.corpus import stopwords
@@ -50,6 +51,8 @@ slug: {blog_slug}
 journal_path = f"{folder_name}/journal.md"
 output_path = f"{folder_name}/_posts/"
 slicer = "-" * 80
+
+Path(output_path).mkdir(exist_ok=True)
 
 dates = []
 counter = -1
