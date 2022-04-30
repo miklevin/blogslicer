@@ -39,7 +39,7 @@ else:
     folder_name = args.path
     blog_title = args.title
     blog_slug = args.slug
-
+    author = args.author
 
 index_front_matter = f"""---
 layout: post
