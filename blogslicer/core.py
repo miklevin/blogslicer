@@ -22,6 +22,7 @@ if hasattr(__builtins__, "__IPYTHON__"):
     folder_name = "../pythonically"
     blog_title = "Pythonic Ally Blog"
     blog_slug = "blog"
+    author = "Mike Levin"
 else:
     h1 = lambda text: print(f"# {text}")
     h2 = lambda text: print(f"## {text}")
@@ -32,6 +33,7 @@ else:
     add_arg("-p", "--path", required=True)
     add_arg("-t", "--title", required=True)
     add_arg("-s", "--slug", required=True)
+    add_arg("-a", "--author", required=True)
     args = aparser.parse_args()
 
     folder_name = args.path
@@ -41,8 +43,10 @@ else:
 
 index_front_matter = f"""---
 layout: post
+author: {author}
 title: "{blog_title}"
 slug: {blog_slug}
+permalink: /blog/
 ---
 
 ### [{blog_title} as One Page](/journal/)
