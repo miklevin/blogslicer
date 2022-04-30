@@ -49,7 +49,7 @@ slug: {blog_slug}
 permalink: /blog/
 ---
 
-### [{author} Home](/) | [{blog_title} as One Page](/journal/)
+### [{blog_title} as One Page](/journal/)
 
 """
 
