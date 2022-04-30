@@ -108,8 +108,10 @@ with open(journal_path, "r") as fh:
                 top.append("---\n")
                 top.append("layout: post\n")
                 top.append(f'title: "{title}"\n')
+                top.append(f'author: "{author}"\n')
                 top.append(f"categories: {blog_slug}\n")
                 top.append(f"slug: {slug}\n")
+                top.append(f"permalink: {blog_slug}/{slug}\n")
                 link = f"- [{title}](/{blog_slug}/{slug}/)"
                 index_list.append(link)
                 top.append("---\n")
