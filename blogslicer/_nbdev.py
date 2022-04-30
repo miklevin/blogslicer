@@ -2,8 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"stops": "00_core.ipynb",
-         "index_front_matter": "00_core.ipynb",
+index = {"index_front_matter": "00_core.ipynb",
          "journal_path": "00_core.ipynb",
          "output_path": "00_core.ipynb",
          "slicer": "00_core.ipynb",
