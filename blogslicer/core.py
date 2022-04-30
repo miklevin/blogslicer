@@ -62,9 +62,12 @@ with open(journal_path, "r") as fh:
     for line in fh:
         line = line.rstrip()
         if date_next:
-            adate = line[3:]
-            date_next = False
-            adatetime = parser.parse(adate).date()
+            try:
+                adate = line[3:]
+                date_next = False
+                adatetime = parser.parse(adate).date()
+            except:
+                adatetime = None
             dates.append(adatetime)
             date_next = False
         if line == slicer:
