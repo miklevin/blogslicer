@@ -49,8 +49,6 @@ slug: {blog_slug}
 permalink: /blog/
 ---
 
-### [{blog_title} as One Page](/journal/)
-
 """
 
 journal_path = f"{folder_name}/journal.md"
