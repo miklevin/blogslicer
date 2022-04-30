@@ -14,8 +14,7 @@ index = {"index_front_matter": "00_core.ipynb",
          "index_list": "00_core.ipynb",
          "index_page": "00_core.ipynb"}
 
-modules = ["core.py",
-           "testargs.py"]
+modules = ["core.py"]
 
 doc_url = "https://miklevin.github.io/blogslicer/"
 
