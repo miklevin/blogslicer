@@ -5,7 +5,6 @@ __all__ = ['index_front_matter', 'journal_path', 'output_path', 'slicer', 'dates
 
 # Cell
 
-import nltk
 import argparse
 from pathlib import Path
 from dateutil import parser
