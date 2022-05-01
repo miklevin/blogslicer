@@ -41,12 +41,14 @@ else:
     author = args.author
 
 index_front_matter = f"""---
-layout: post
+layout: default
 author: {author}
 title: "{blog_title}"
 slug: {blog_slug}
 permalink: /blog/
 ---
+
+[{blog_title} as 1 page](/journal/)
 
 """
 
@@ -109,7 +111,7 @@ with open(journal_path, "r") as fh:
                 top.append(f"categories: {blog_slug}\n")
                 top.append(f"slug: {slug}\n")
                 top.append(f"permalink: /{blog_slug}/{slug}/\n")
-                link = f"- {adatetime} [{title}](/{blog_slug}/{slug}/)"
+                link = f"- [{title}](/{blog_slug}/{slug}/)"
                 index_list.append(link)
                 top.append("---\n")
                 top.append("\n")
