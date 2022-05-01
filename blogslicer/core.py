@@ -11,7 +11,7 @@ from dateutil import parser
 from slugify import slugify
 
 
-if hasattr(__builtins__, "__IPYTHON__"):
+if hasattr(__builtins__, "__IPYTHON__") or __name__ != '__main__':
     from IPython.display import display, Markdown
 
     h1 = lambda text: display(Markdown(f"# {text}"))
