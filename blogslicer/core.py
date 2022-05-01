@@ -84,7 +84,7 @@ at_top = True
 index_list = []
 with open(journal_path, "r") as fh:
     for i, line in enumerate(fh):
-        line = dumbquote(line.rstrip())
+        line = line.rstrip()
         if line == slicer:
             if at_top:
                 at_top = False
