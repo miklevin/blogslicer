@@ -126,7 +126,9 @@ Converted index.ipynb.
 
 Okay, that ran without a hitch and that&#39;s the important one. Next!
 
+```bash
 nbdev_clean_nbs
+```
 
 No output, but that means it ran well. Always a good idea before:
 
@@ -164,8 +166,55 @@ Success! But without the documentation successfully built, both the Github repo
 page and PyPi package page contain a generic nbdev template. Ugh! That can&#39;t
 stand. Okay, diagnose that quickly. No rabbit holes!
 
+Okay, I was able to uncomment the index.ipynb package import by changing the
+Jupyter environment check to control where the arguments come from like so:
 
+```python
+if hasattr(__builtins__, &#34;__IPYTHON__&#34;) or __name__ != &#39;__main__&#39;:
+    from IPython.display import display, Markdown
 
+    h1 = lambda text: display(Markdown(f&#34;# {text}&#34;))
+    h2 = lambda text: display(Markdown(f&#34;## {text}&#34;))
+    h3 = lambda text: display(Markdown(f&#34;### {text}&#34;))
+
+    folder_name = &#34;../pythonically&#34;
+    blog_title = &#34;Pythonic Ally Blog&#34;
+    blog_slug = &#34;blog&#34;
+    author = &#34;Mike Levin&#34;
+else:
+    h1 = lambda text: print(f&#34;# {text}&#34;)
+    h2 = lambda text: print(f&#34;## {text}&#34;)
+    h3 = lambda text: print(f&#34;## {text}&#34;)
+
+    aparser = argparse.ArgumentParser()
+    add_arg = aparser.add_argument
+    add_arg(&#34;-p&#34;, &#34;--path&#34;, required=True)
+    add_arg(&#34;-t&#34;, &#34;--title&#34;, required=True)
+    add_arg(&#34;-s&#34;, &#34;--slug&#34;, required=True)
+    add_arg(&#34;-a&#34;, &#34;--author&#34;, required=True)
+    args = aparser.parse_args()
+
+    folder_name = args.path
+    blog_title = args.title
+    blog_slug = args.slug
+    author = args.author
+```
+
+I know it worked without breaking the command-line (using &#34;python&#34; in the
+command) input because you&#39;re reading this. And so I&#39;ve finally completed my
+pattern for creating packages in Jupyter Notebooks (really, JupyterLab) and
+having them also work as parameterized command-line tools releasable into PyPI.
+I still have a little work to go to make it work without the python interpreter
+prefix. I&#39;ve got some research to do on how pip installing results in
+CLI-runnable commands.
+
+So now onto dumb-quotes. I&#39;m going to hold off on putting the actual PyPI
+release into my everyday frequently used blog release script. I thing that may
+cause more harm than good. But definitely a topic for later is bringing the
+PyPI package up-to-date with my fast-and-furious daily code tweaking.
+
+Okay, so one more time, but from scratch (blogslicer was already well
+underway).
 
 
 
@@ -2445,7 +2494,9 @@ Converted index.ipynb.
 
 Okay, that ran without a hitch and that&#39;s the important one. Next!
 
+```bash
 nbdev_clean_nbs
+```
 
 No output, but that means it ran well. Always a good idea before:
 
@@ -2483,8 +2534,55 @@ Success! But without the documentation successfully built, both the Github repo
 page and PyPi package page contain a generic nbdev template. Ugh! That can&#39;t
 stand. Okay, diagnose that quickly. No rabbit holes!
 
+Okay, I was able to uncomment the index.ipynb package import by changing the
+Jupyter environment check to control where the arguments come from like so:
 
+```python
+if hasattr(__builtins__, &#34;__IPYTHON__&#34;) or __name__ != &#39;__main__&#39;:
+    from IPython.display import display, Markdown
 
+    h1 = lambda text: display(Markdown(f&#34;# {text}&#34;))
+    h2 = lambda text: display(Markdown(f&#34;## {text}&#34;))
+    h3 = lambda text: display(Markdown(f&#34;### {text}&#34;))
+
+    folder_name = &#34;../pythonically&#34;
+    blog_title = &#34;Pythonic Ally Blog&#34;
+    blog_slug = &#34;blog&#34;
+    author = &#34;Mike Levin&#34;
+else:
+    h1 = lambda text: print(f&#34;# {text}&#34;)
+    h2 = lambda text: print(f&#34;## {text}&#34;)
+    h3 = lambda text: print(f&#34;## {text}&#34;)
+
+    aparser = argparse.ArgumentParser()
+    add_arg = aparser.add_argument
+    add_arg(&#34;-p&#34;, &#34;--path&#34;, required=True)
+    add_arg(&#34;-t&#34;, &#34;--title&#34;, required=True)
+    add_arg(&#34;-s&#34;, &#34;--slug&#34;, required=True)
+    add_arg(&#34;-a&#34;, &#34;--author&#34;, required=True)
+    args = aparser.parse_args()
+
+    folder_name = args.path
+    blog_title = args.title
+    blog_slug = args.slug
+    author = args.author
+```
+
+I know it worked without breaking the command-line (using &#34;python&#34; in the
+command) input because you&#39;re reading this. And so I&#39;ve finally completed my
+pattern for creating packages in Jupyter Notebooks (really, JupyterLab) and
+having them also work as parameterized command-line tools releasable into PyPI.
+I still have a little work to go to make it work without the python interpreter
+prefix. I&#39;ve got some research to do on how pip installing results in
+CLI-runnable commands.
+
+So now onto dumb-quotes. I&#39;m going to hold off on putting the actual PyPI
+release into my everyday frequently used blog release script. I thing that may
+cause more harm than good. But definitely a topic for later is bringing the
+PyPI package up-to-date with my fast-and-furious daily code tweaking.
+
+Okay, so one more time, but from scratch (blogslicer was already well
+underway).
 
 
 
