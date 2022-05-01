@@ -9,6 +9,7 @@ import argparse
 from pathlib import Path
 from dateutil import parser
 from slugify import slugify
+from dumbquotes import dumbquote
 
 
 if hasattr(__builtins__, "__IPYTHON__") or __name__ != '__main__':
@@ -83,7 +84,7 @@ at_top = True
 index_list = []
 with open(journal_path, "r") as fh:
     for i, line in enumerate(fh):
-        line = line.rstrip()
+        line = dumbquote(line.rstrip())
         if line == slicer:
             if at_top:
                 at_top = False
