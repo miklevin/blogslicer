@@ -103,7 +103,8 @@ with open(journal_path, "r") as fh:
                 if table and maybe and maybe[0] == "#":
                     title = maybe[maybe.find(" ") + 1 :]
                     has_title = True
-                slug = slugify(title)
+                slug = title.replace("'", "")
+                slug = slugify(slug)
                 top = []
                 top.append("---\n")
                 top.append("layout: post\n")
