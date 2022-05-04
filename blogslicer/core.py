@@ -48,10 +48,10 @@ title: "{blog_title}"
 slug: {blog_slug}
 permalink: /blog/
 ---
-
-[{blog_title} as 1 page](/journal/)
-
 """
+
+# [{blog_title} as 1 page](/journal/)
+
 
 journal_path = f"{folder_name}/journal.md"
 output_path = f"{folder_name}/_posts/"
