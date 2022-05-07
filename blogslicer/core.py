@@ -48,7 +48,7 @@ title: "{blog_title}"
 slug: {blog_slug}
 permalink: /blog/
 ---
-# {{ site.title }} Blog
+# { site.title } Blog
 
 """
 
