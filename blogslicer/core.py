@@ -48,6 +48,8 @@ title: "{blog_title}"
 slug: {blog_slug}
 permalink: /blog/
 ---
+# {{ site.title }} Blog
+
 """
 
 # [{blog_title} as 1 page](/journal/)
