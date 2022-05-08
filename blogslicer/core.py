@@ -12,15 +12,15 @@ from slugify import slugify
 from dumbquotes import dumbquote
 
 
-if hasattr(__builtins__, "__IPYTHON__") or __name__ != '__main__':
+if hasattr(__builtins__, "__IPYTHON__") or __name__ != "__main__":
     from IPython.display import display, Markdown
 
     h1 = lambda text: display(Markdown(f"# {text}"))
     h2 = lambda text: display(Markdown(f"## {text}"))
     h3 = lambda text: display(Markdown(f"### {text}"))
 
-    folder_name = "../pythonically"
-    blog_title = "Pythonic Ally Blog"
+    folder_name = "../PythonicAlly.com"
+    blog_title = "Pythonic Ally"
     blog_slug = "blog"
     author = "Mike Levin"
 else:
@@ -113,8 +113,8 @@ with open(journal_path, "r") as fh:
                 top.append(f"categories: {blog_slug}\n")
                 top.append(f"slug: {slug}\n")
                 top.append(f"permalink: /{blog_slug}/{slug}/\n")
-                link = f"- [{title}](/{blog_slug}/{slug}/) {adatetime}"
-                # .strftime("%A, %B %d, %Y")
+                fdate = adatetime.strftime("%m/%d/%Y")
+                link = f"- [{title}](/{blog_slug}/{slug}/) {fdate}"
                 index_list.append(link)
                 top.append("---\n")
                 top.append("\n")
