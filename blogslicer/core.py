@@ -48,11 +48,9 @@ title: "blog_title"
 slug: {blog_slug}
 permalink: /blog/
 ---
-# \{\{ site.tagline \}\}
 
 """
-
-# [{blog_title} as 1 page](/journal/)
+index_front_matter += "# {{ site.tagline }}"
 
 
 journal_path = f"{folder_name}/journal.md"
