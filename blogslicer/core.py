@@ -69,7 +69,7 @@ with open(journal_path, "r") as fh:
             try:
                 adate = line[3:]
                 date_next = False
-                adatetime = parser.parse(adate).date()
+                adatetime = parser.parse(adate)
             except:
                 adatetime = None
             dates.append(adatetime)
@@ -113,8 +113,8 @@ with open(journal_path, "r") as fh:
                 top.append(f"categories: {blog_slug}\n")
                 top.append(f"slug: {slug}\n")
                 top.append(f"permalink: /{blog_slug}/{slug}/\n")
-                link = f"- [{title}](/{blog_slug}/{slug}/) {adatetime}"
-                # .strftime("%A, %B %d, %Y")
+                link = f"- [{title}](/{blog_slug}/{slug}/) {adatetime.strftime("%A, %B %d, %Y")}"
+                #
                 index_list.append(link)
                 top.append("---\n")
                 top.append("\n")
