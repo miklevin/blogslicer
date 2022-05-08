@@ -50,7 +50,7 @@ permalink: /blog/
 ---
 
 """
-index_front_matter += "# {{ site.tagline }}"
+index_front_matter += "# Welcome to The {{ site.tagline }} Blog"
 
 
 journal_path = f"{folder_name}/journal.md"
