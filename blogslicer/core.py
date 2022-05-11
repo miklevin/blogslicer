@@ -44,7 +44,7 @@ else:
 index_front_matter = f"""---
 layout: default
 author: {author}
-title: "blog_title"
+title: "{blog_title}"
 slug: {blog_slug}
 permalink: /blog/
 ---
