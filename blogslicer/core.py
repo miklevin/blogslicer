@@ -113,7 +113,10 @@ with open(journal_path, "r") as fh:
                 top.append(f"categories: {blog_slug}\n")
                 top.append(f"slug: {slug}\n")
                 top.append(f"permalink: /{blog_slug}/{slug}/\n")
-                fdate = adatetime.strftime("%m/%d/%Y")
+                try:
+                    fdate = adatetime.strftime("%m/%d/%Y")
+                except:
+                    fdate = None
                 link = f"- [{title}](/{blog_slug}/{slug}/) {fdate}"
                 index_list.append(link)
                 top.append("---\n")
