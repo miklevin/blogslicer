@@ -23,6 +23,7 @@ if hasattr(__builtins__, "__IPYTHON__") or __name__ != "__main__":
     blog_title = "Pythonic Ally"
     blog_slug = "blog"
     author = "Mike Levin"
+    verbose = False
 else:
     h1 = lambda text: print(f"# {text}")
     h2 = lambda text: print(f"## {text}")
@@ -34,12 +35,14 @@ else:
     add_arg("-t", "--title", required=True)
     add_arg("-s", "--slug", required=True)
     add_arg("-a", "--author", required=True)
+    add_arg("-v", "--verbose", required=False, default=False)
     args = aparser.parse_args()
 
     folder_name = args.path
     blog_title = args.title
     blog_slug = args.slug
     author = args.author
+    verbose = args.verbose
 
 index_front_matter = f"""---
 layout: default
@@ -126,7 +129,8 @@ with open(journal_path, "r") as fh:
                     top_chop = 3
                 table = [f"{x}\n" for x in table[top_chop:]]
                 table = top + table
-                print("".join(table))
+                if verbose:
+                    print("".join(table))
                 fw.writelines(table)
             counter = counter - 1
             table = []
