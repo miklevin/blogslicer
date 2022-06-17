@@ -65,7 +65,7 @@ Path(output_path).mkdir(exist_ok=True)
 dates = []
 counter = -1
 date_next = False
-with open(journal_path, "r") as fh:
+with open(journal_path, "r", encoding="utf-8") as fh:
     for line in fh:
         line = line.rstrip()
         if date_next:
@@ -85,7 +85,7 @@ dates.reverse()
 table = []
 at_top = True
 index_list = []
-with open(journal_path, "r") as fh:
+with open(journal_path, "r", encoding="utf-8") as fh:
     for i, line in enumerate(fh):
         line = line.rstrip()
         if line == slicer:
@@ -96,7 +96,7 @@ with open(journal_path, "r") as fh:
             adatetime = dates[counter - 1]
             filename = f"{output_path}{adatetime}-post-{counter}.md"
             h3(f"FILE: {filename}")
-            with open(filename, "w") as fw:
+            with open(filename, "w", encoding="utf-8") as fw:
                 title = f"Post {counter}"
                 slug = title
                 if table[0] == slicer:
@@ -138,5 +138,5 @@ with open(journal_path, "r") as fh:
 
 index_page = index_front_matter + "\n\n" + "\n".join(index_list)
 
-with open(f"{folder_name}/blog.md", "w") as fh:
+with open(f"{folder_name}/blog.md", "w", encoding="utf-8") as fh:
     fh.writelines(index_page)
