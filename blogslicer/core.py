@@ -15,19 +15,12 @@ from dumbquotes import dumbquote
 if hasattr(__builtins__, "__IPYTHON__") or __name__ != "__main__":
     from IPython.display import display, Markdown
 
-    h1 = lambda text: display(Markdown(f"# {text}"))
-    h2 = lambda text: display(Markdown(f"## {text}"))
-    h3 = lambda text: display(Markdown(f"### {text}"))
-
     folder_name = "../PythonicAlly.com"
     blog_title = "Pythonic Ally"
     blog_slug = "blog"
     author = "Mike Levin"
     verbose = False
 else:
-    h1 = lambda text: print(f"# {text}")
-    h2 = lambda text: print(f"## {text}")
-    h3 = lambda text: print(f"## {text}")
 
     aparser = argparse.ArgumentParser()
     add_arg = aparser.add_argument
@@ -93,45 +86,49 @@ with open(journal_path, "r", encoding="utf-8") as fh:
                 at_top = False
                 table = []
                 continue
-            adatetime = dates[counter - 1]
+            try:
+                adatetime = dates[counter]
+            except:
+                adatetime = dates[0]
             filename = f"{output_path}{adatetime}-post-{counter}.md"
-            h3(f"FILE: {filename}")
-            with open(filename, "w", encoding="utf-8") as fw:
-                title = f"Post {counter}"
-                slug = title
-                if table[0] == slicer:
-                    table = table[1:]
-                maybe = table[1]
-                has_title = False
-                if table and maybe and maybe[0] == "#":
-                    title = maybe[maybe.find(" ") + 1 :]
-                    has_title = True
-                slug = title.replace("'", "")
-                slug = slugify(slug)
-                top = []
-                top.append("---\n")
-                top.append("layout: post\n")
-                top.append(f'title: "{title}"\n')
-                top.append(f'author: "{author}"\n')
-                top.append(f"categories: {blog_slug}\n")
-                top.append(f"slug: {slug}\n")
-                top.append(f"permalink: /{blog_slug}/{slug}/\n")
-                try:
-                    fdate = adatetime.strftime("%m/%d/%Y")
-                except:
-                    fdate = None
-                link = f"- [{title}](/{blog_slug}/{slug}/) {fdate}"
-                index_list.append(link)
-                top.append("---\n")
-                top.append("\n")
-                top_chop = 2
-                if has_title:
-                    top_chop = 3
-                table = [f"{x}\n" for x in table[top_chop:]]
-                table = top + table
-                if verbose:
-                    print("".join(table))
-                fw.writelines(table)
+            if adatetime:
+                print(filename)
+                with open(filename, "w", encoding="utf-8") as fw:
+                    title = f"Post {counter}"
+                    slug = title
+                    if table[0] == slicer:
+                        table = table[1:]
+                    maybe = table[1]
+                    has_title = False
+                    if table and maybe and maybe[0] == "#":
+                        title = maybe[maybe.find(" ") + 1 :]
+                        has_title = True
+                    slug = title.replace("'", "")
+                    slug = slugify(slug)
+                    top = []
+                    top.append("---\n")
+                    top.append("layout: post\n")
+                    top.append(f'title: "{title}"\n')
+                    top.append(f'author: "{author}"\n')
+                    top.append(f"categories: {blog_slug}\n")
+                    top.append(f"slug: {slug}\n")
+                    top.append(f"permalink: /{blog_slug}/{slug}/\n")
+                    try:
+                        fdate = adatetime.strftime("%m/%d/%Y")
+                    except:
+                        fdate = None
+                    link = f"- [{title}](/{blog_slug}/{slug}/) {fdate}"
+                    index_list.append(link)
+                    top.append("---\n")
+                    top.append("\n")
+                    top_chop = 2
+                    if has_title:
+                        top_chop = 3
+                    table = [f"{x}\n" for x in table[top_chop:]]
+                    table = top + table
+                    if verbose:
+                        print("".join(table))
+                    fw.writelines(table)
             counter = counter - 1
             table = []
         table.append(line)
